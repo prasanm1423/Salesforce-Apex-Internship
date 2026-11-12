@@ -1,0 +1,45 @@
+// Program 8: Bulkified SOQL (Best Practice)
+
+// STEP 1: Retrieve Accounts
+
+List<Account> accounts = [
+    SELECT Id, Name
+    FROM Account
+    WHERE Name LIKE 'Apex Internship Demo%'
+];
+
+
+// STEP 2: Collect Account IDs
+
+Set<Id> accountIds = new Set<Id>();
+
+for(Account acc : accounts) {
+    accountIds.add(acc.Id);
+}
+
+
+// STEP 3: Execute one SOQL query outside the loop
+
+Integer queriesBefore = Limits.getQueries();
+
+List<Contact> contacts = [
+    SELECT Id, Name, AccountId
+    FROM Contact
+    WHERE AccountId IN :accountIds
+];
+
+Integer queriesAfter = Limits.getQueries();
+
+
+// STEP 4: Display results
+
+System.debug('===== BULKIFIED SOQL =====');
+
+System.debug('Accounts processed: ' + accounts.size());
+
+System.debug('Contacts retrieved: ' + contacts.size());
+
+System.debug(
+    'SOQL queries consumed: ' +
+    (queriesAfter - queriesBefore)
+);

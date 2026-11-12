@@ -1,0 +1,38 @@
+// Program 7: SOQL Inside Loop (Bad Practice)
+
+// Retrieve Accounts
+List<Account> accounts = [
+    SELECT Id, Name
+    FROM Account
+    WHERE Name LIKE 'Apex Internship Demo%'
+];
+
+// Measure query consumption
+Integer queriesBefore = Limits.getQueries();
+
+System.debug('===== SOQL INSIDE LOOP =====');
+
+for(Account acc : accounts) {
+
+    // SOQL executes once per Account
+    List<Contact> contacts = [
+        SELECT Id, Name
+        FROM Contact
+        WHERE AccountId = :acc.Id
+    ];
+
+    System.debug(
+        'Account: ' + acc.Name +
+        ' | Contacts: ' + contacts.size()
+    );
+}
+
+// Calculate queries consumed
+Integer queriesAfter = Limits.getQueries();
+
+System.debug(
+    'SOQL queries consumed inside loop: ' +
+    (queriesAfter - queriesBefore)
+);
+
+System.debug('Accounts processed: ' + accounts.size());

@@ -1,0 +1,39 @@
+// Program 2: Collections
+
+// 1. List - Allows duplicate values
+List<String> fruits = new List<String>();
+
+fruits.add('Apple');
+fruits.add('Banana');
+fruits.add('Mango');
+fruits.add('Apple');
+
+System.debug('===== LIST =====');
+System.debug('Fruits: ' + fruits);
+System.debug('List Size: ' + fruits.size());
+
+
+// 2. Set - Stores unique values
+Set<String> cities = new Set<String>();
+
+cities.add('Bengaluru');
+cities.add('Mumbai');
+cities.add('Delhi');
+cities.add('Bengaluru');
+
+System.debug('===== SET =====');
+System.debug('Cities: ' + cities);
+System.debug('Set Size: ' + cities.size());
+
+
+// 3. Map - Stores key-value pairs
+Map<Integer, String> students = new Map<Integer, String>();
+
+students.put(101, 'Prasanna');
+students.put(102, 'Rahul');
+students.put(103, 'Arun');
+
+System.debug('===== MAP =====');
+System.debug('Students: ' + students);
+System.debug('Student 101: ' + students.get(101));
+System.debug('Map Size: ' + students.size());

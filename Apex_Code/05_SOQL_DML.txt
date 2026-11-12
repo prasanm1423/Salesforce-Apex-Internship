@@ -1,0 +1,68 @@
+// Program 5: SOQL and DML Operations
+
+// STEP 1: Create Account records
+
+List<Account> accounts = new List<Account>();
+
+accounts.add(new Account(
+    Name = 'Apex Internship Demo A',
+    Industry = 'Technology'
+));
+
+accounts.add(new Account(
+    Name = 'Apex Internship Demo B',
+    Industry = 'Finance'
+));
+
+accounts.add(new Account(
+    Name = 'Apex Internship Demo C',
+    Industry = 'Education'
+));
+
+// Insert records
+insert accounts;
+
+System.debug('===== INSERT RESULTS =====');
+System.debug('Records inserted: ' + accounts.size());
+
+
+// STEP 2: Retrieve records using SOQL
+
+List<Account> retrievedAccounts = [
+    SELECT Id, Name, Industry
+    FROM Account
+    WHERE Name LIKE 'Apex Internship Demo%'
+];
+
+System.debug('===== SOQL RESULTS =====');
+
+for(Account acc : retrievedAccounts) {
+    System.debug(
+        'Name: ' + acc.Name +
+        ' | Industry: ' + acc.Industry +
+        ' | ID: ' + acc.Id
+    );
+}
+
+
+// STEP 3: Update a record
+
+Account accountToUpdate = retrievedAccounts[0];
+
+accountToUpdate.Phone = '9876543210';
+
+update accountToUpdate;
+
+System.debug('===== UPDATE RESULT =====');
+System.debug('Updated Account: ' + accountToUpdate.Name);
+System.debug('Updated Phone: ' + accountToUpdate.Phone);
+
+
+// STEP 4: Delete one record
+
+Account accountToDelete = retrievedAccounts[2];
+
+delete accountToDelete;
+
+System.debug('===== DELETE RESULT =====');
+System.debug('Deleted Account: ' + accountToDelete.Name);

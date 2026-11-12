@@ -1,0 +1,23 @@
+// Program 6: Handling Empty Query Results
+
+List<Account> accounts = [
+    SELECT Id, Name
+    FROM Account
+    WHERE Name = 'NonExisting_Apex_Account_12345'
+];
+
+System.debug('===== EMPTY QUERY HANDLING =====');
+
+System.debug('Records found: ' + accounts.size());
+
+if(!accounts.isEmpty()) {
+
+    System.debug('Account found: ' + accounts[0].Name);
+
+}
+else {
+
+    System.debug('No account records found.');
+
+    System.debug('Handled empty query successfully.');
+}

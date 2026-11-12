@@ -1,0 +1,65 @@
+// Program 3: Loops and Conditional Statements
+
+// 1. For Loop
+System.debug('===== FOR LOOP =====');
+
+for(Integer i = 1; i <= 5; i++) {
+    System.debug('Number: ' + i);
+}
+
+
+// 2. Enhanced For Loop
+System.debug('===== ENHANCED FOR LOOP =====');
+
+List<String> names = new List<String>{
+    'Prasanna', 'Rahul', 'Arun'
+};
+
+for(String student : names) {
+    System.debug('Student: ' + student);
+}
+
+
+// 3. While Loop
+System.debug('===== WHILE LOOP =====');
+
+Integer count = 1;
+
+while(count <= 3) {
+    System.debug('Count: ' + count);
+    count++;
+}
+
+
+// 4. If-Else
+System.debug('===== IF ELSE =====');
+
+Integer marks = 85;
+
+if(marks >= 90) {
+    System.debug('Grade: A');
+}
+else if(marks >= 75) {
+    System.debug('Grade: B');
+}
+else {
+    System.debug('Grade: C');
+}
+
+
+// 5. Switch Statement
+System.debug('===== SWITCH =====');
+
+String day = 'Monday';
+
+switch on day {
+    when 'Monday' {
+        System.debug('Start of working week');
+    }
+    when 'Friday' {
+        System.debug('End of working week');
+    }
+    when else {
+        System.debug('Regular working day');
+    }
+}

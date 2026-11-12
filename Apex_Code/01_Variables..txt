@@ -1,0 +1,14 @@
+// Program 1: Variables and Data Types
+
+String name = 'Prasanna';
+Integer age = 21;
+Double percentage = 85.75;
+Boolean isStudent = true;
+Date todayDate = Date.today();
+
+System.debug('===== APEX FUNDAMENTALS =====');
+System.debug('Name: ' + name);
+System.debug('Age: ' + age);
+System.debug('Percentage: ' + percentage);
+System.debug('Is Student: ' + isStudent);
+System.debug('Today: ' + todayDate);
